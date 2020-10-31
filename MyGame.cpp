@@ -23,38 +23,38 @@ void MyGame::start(Board board)
 		cin.get(); // wait for input
 	}
 
-	while (current_turn <= board.getNumTurns() && winner == 0 && menu == 'C') //Loop que se detiene cuando se alcanza el máximo de turnos o ya hay un ganador
+	while (current_turn <= board.getNumTurns() && winner == 0 && menu == 'C') // The game stops when there's a winner or there are no more turns
 	{
 		for (int i = 0; i < board.getNumPlayers(); i++)
 		{
 			dice.rollDice();
-			board.setPlayerTurn(current_turn, i); //Actualizar el turno del jugador 
+			board.setPlayerTurn(current_turn, i); // Update player turn
 
-			if (board.getTileType(board.getPlayerTileNum(i)) == 'L') //Condicional si el jugador cae en una escalera
+			if (board.getTileType(board.getPlayerTileNum(i)) == 'L') // If the player lands on L
 			{
 				cout << board.getPlayerTurn(i) << " " << board.getPlayerNum(i) << " " << board.getPlayerTileNum(i) << " " << dice.getDice() << " " << board.getTileType(board.getPlayerTileNum(i)) << " " << board.getPlayerTileNum(i) + dice.getDice() + board.getTileReward(board.getPlayerTileNum(i)) << endl;
-				board.setPlayerTileNum(board.getPlayerTileNum(i) + dice.getDice(), i); //Actualizar Posición del jugador
+				board.setPlayerTileNum(board.getPlayerTileNum(i) + dice.getDice(), i); // Update player position
 			}
 
-			else if (board.getTileType(board.getPlayerTileNum(i)) == 'S') //Condicional si el jugador cae en una serpiente
+			else if (board.getTileType(board.getPlayerTileNum(i)) == 'S') // If the player lands on S
 			{
 				cout << board.getPlayerTurn(i) << " " << board.getPlayerNum(i) << " " << board.getPlayerTileNum(i) << " " << dice.getDice() << " " << board.getTileType(board.getPlayerTileNum(i)) << " " << board.getPlayerTileNum(i) + dice.getDice() + board.getTilePenalty(board.getPlayerTileNum(i)) << endl;
-				board.setPlayerTileNum(board.getPlayerTileNum(i) + dice.getDice(), i); //Actualizar posición del jugador
+				board.setPlayerTileNum(board.getPlayerTileNum(i) + dice.getDice(), i); // Update player position
 			}
 
-			else //Condicional si cae en una casilla normal
+			else // If the player lands on a normal tile
 			{
 				cout << board.getPlayerTurn(i) << " " << board.getPlayerNum(i) << " " << board.getPlayerTileNum(i) << " " << dice.getDice() << " " << board.getTileType(board.getPlayerTileNum(i)) << " " << board.getPlayerTileNum(i) + dice.getDice() << endl;
-				board.setPlayerTileNum(board.getPlayerTileNum(i) + dice.getDice(), i); //Actualizar posición del jugador
+				board.setPlayerTileNum(board.getPlayerTileNum(i) + dice.getDice(), i); // Update player position
 			}
 
-			if (board.getPlayerTileNum(i) >= board.getNumTiles()) //Condicional para determinar si ya ha habido un ganador
+			if (board.getPlayerTileNum(i) >= board.getNumTiles()) // Breaks the loop if there's a winner
 			{
-				winner = i + 1; //Actualizar variable que representa al ganador
-				break; //Romper el for loop
+				winner = i + 1;
+				break;
 			}
 
-			if (board.getGameType() == 'M') // Input para continuar el juego en caso de que sea manual
+			if (board.getGameType() == 'M') // Input in case the game was Manual
 			{
 				cin >> menu;
 
@@ -63,9 +63,9 @@ void MyGame::start(Board board)
 			}
 		}
 
-		current_turn++; // Aumentar en 1 el turno actual
+		current_turn++; // Increase current turn
 	}
-	if (winner != 0) // Condicional por si el jugador decide salirse a medio juego
+	if (winner != 0) // 
 	{
 		cout << "Player " << winner << " is the winner" << endl;
 	}
