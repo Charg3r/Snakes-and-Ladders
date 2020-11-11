@@ -31,8 +31,7 @@ int main()
     cin >> game_type;
 
 
-    while (game_type != 'A' && game_type != 'M')
-    {
+    while (game_type != 'A' && game_type != 'M' && game_type != 'a' && game_type != 'm') {
         cout << "Type a valid character, A for Automatic, M for Manual: " << endl;
         cin >> game_type;
     }

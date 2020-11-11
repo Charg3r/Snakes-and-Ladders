@@ -19,46 +19,32 @@ Board::Board()
 
 	//Fill player array
 	for (int i = 0; i < num_players; i++)
-	{
 		players[i].setPlayerNum(i + 1);
-	}
 
 	//Fill tile array
 	for (int i = 0; i < num_tiles; i++)
-	{
 		tiles[i].setType('N');
-	}
 
 	//Fill random snakes
-	for (int i = 0; i < num_snakes; i++)
-	{
+	for (int i = 0; i < num_snakes; i++) {
 		int random_number = rand() % (num_tiles - 2) + 1;
 
 		while (tiles[random_number].getType() != 'N')
-		{
 			int random_number = rand() % (num_tiles - 2) + 1;
-		}
 
 		while (tiles[random_number].getType() == 'N')
-		{
 			tiles[random_number].setType('S');
-		}
 	}
 
 	//Fill random ladders
-	for (int i = 0; i < num_ladders; i++)
-	{
+	for (int i = 0; i < num_ladders; i++) {
 		int random_number = rand() % (num_tiles - 2) + 1;
 
 		while (tiles[random_number].getType() != 'N')
-		{
 			int random_number = rand() % (num_tiles - 2) + 1;
-		}
 
 		while (tiles[random_number].getType() == 'N')
-		{
 			tiles[random_number].setType('L');
-		}
 	}
 }
 
@@ -77,45 +63,33 @@ Board::Board(int t, int s, int l, int p, int r, int pl, int tu, char gt)
 
 	//Fill player array
 	for (int i = 0; i < num_players; i++)
-	{
 		players[i].setPlayerNum(i + 1);
-	}
 
 	//Fill tile array
 	for (int i = 0; i < num_tiles; i++)
-	{
 		tiles[i].setType('N');
-	}
 
 	//Fill random snakes
-	for (int i = 0; i < num_snakes; i++)
-	{
+	for (int i = 0; i < num_snakes; i++) {
 		int random_number = rand() % (num_tiles - 2) + 1;
 
 		while (tiles[random_number].getType() != 'N')
-		{
 			int random_number = rand() % (num_tiles - 2) + 1;
-		}
 
-		while (tiles[random_number].getType() == 'N')
-		{
+		while (tiles[random_number].getType() == 'N') {
 			tiles[random_number].setType('S');
 			tiles[random_number].setPenalty(p);
 		}
 	}
 
 	//Fill random ladders
-	for (int i = 0; i < num_ladders; i++)
-	{
+	for (int i = 0; i < num_ladders; i++) {
 		int random_number = rand() % (num_tiles - 2) + 1;
 
 		while (tiles[random_number].getType() != 'N')
-		{
 			int random_number = rand() % (num_tiles - 2) + 1;
-		}
 
-		while (tiles[random_number].getType() == 'N')
-		{
+		while (tiles[random_number].getType() == 'N') {
 			tiles[random_number].setType('L');
 			tiles[random_number].setReward(r);
 		}
